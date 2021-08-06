@@ -8,7 +8,6 @@ do
   if not spr then return app.alert "There is no active sprite" end
 
   local function activeFrameNumber()
-    app.alert("In function")
     local f = app.activeFrame
     if f == nil then
       return 1
@@ -30,12 +29,12 @@ do
         ix = app.activeLayer.stackIndex
         frameIx = activeFrameNumber()
         toCopy = app.activeImage
-        app.alert(copyLayer.name .. ": " .. ix)
         
         local newLayer = spr:newLayer()
         newLayer.stackIndex = ix + 1
         targetCel = spr:newCel(newLayer, frameIx)
         targetImage = targetCel.image
+        app.alert(toCopy.width .. ", " .. toCopy.height)
         for x = bounds.x, bounds.x+bounds.width-1 do
             for y = bounds.y, bounds.y + bounds.height-1 do
                 local pixelInfo = toCopy:getPixel(x, y)
